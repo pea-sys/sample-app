@@ -14,5 +14,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", contact_path
     assert_select "a[href=?]", signup_path
     assert_select "a[href=?]", login_path
+    assert_match @user.followers.count.to_s, response.body
+    assert_match @user.microposts.count.to_s, response.body
   end
 end
